@@ -5,10 +5,12 @@ const tripsController = require('../controllers/trips');
 
 router
     .route('/trips')
-    .get(tripsController.getAllTrips);
+    .get(tripsController.tripsList); // GET method routes tripList
 
-router
-    .route('/trip/:tripCode')
-    .get(tripsController.getTripByCode);
+// GET Method routes tripsFindByCode - requires parameter
+router 
+    .route('/trips/:tripCode')
+    .get(tripsController.tripsFindByCode);
+
 
 module.exports = router;

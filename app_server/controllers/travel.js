@@ -1,54 +1,38 @@
-const request = require('request');
-const apiOptions = {
-    server: 'http://localhost:3000'
+const tripsEndpoint = 'http://localhost:3000/api/trips';
+const options = {
+    method: 'GET',
+    headers: {
+        'Accept': ' application/json'
+    }
 }
 
-// Render travel list view
-const renderTravelList = (req, res, responseBody) => {
-    let message = null;
-    let pageTitle = process.env.npm_package_description + ' - Travel';
+// var fs = require('fs');
+// var trips = JSON.parse(fs.readFileSync('./data/trips.json','utf8'));
 
-    if (!(responseBody instanceof Array)) {
-        message = 'API lookup error';
-        responseBody = [];
-    } else {
-        if (!responseBody.length) {
-            message = "No trips exist in database!";
-        }
-    }
+/* GET travel view */
+const travel = async function(req, res, next) {
+    // console.log('TRAVEL CONTROLLER BEGIN");
+    await fetch(tripsEndpoint, options)
+        .then(res => res.json())
+        .then(json => {
+            // console.log(json);
+            if(!(json instanceof Array)) {
+                message = 'API lookup error';
+                json = [];
 
-    res.render('travel', {
-        title: pageTitle,
-        trips: responseBody,
-        message
-    });
-
-};
-
-
-
-// Get travel list
-const travelList = (req, res) => {
-    const path = '/api/trips';
-    const requestOptions = {
-        url: `${apiOptions.server}${path}`,
-        method: 'GET',
-        json: {},
-    };
-    console.info('>> travelController.travelList calling ' +
-        requestOptions.url);
-    
-    request(
-        requestOptions,
-        (err, {statusCode}, body) => {
-            if(err) {
-                console.error(err);
+            } else {
+                if(!json.length){
+                    message = 'No triups exist in our database!';
+                }
             }
-            renderTravelList(req, res, body);
-        }
-    );
+            res.render('travel', {title: 'Travlr Getaways', trips: json, message});
+
+        })
+        .catch(err => res.status(500).send(e.message));
+    
 };
 
 module.exports = {
-    travelList
-}
+    travel
+
+};

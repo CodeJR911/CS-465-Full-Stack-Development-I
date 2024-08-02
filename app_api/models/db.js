@@ -21,30 +21,35 @@ mongoose.connection.on('disconnected', () => {
   console.log('Mongoose disconnected');
 });
 
-const gracefulShutdown = (msg, callback) => {
+const gracefulShutdown = (msg) => {
   mongoose.connection.close( () => {
     console.log(`Mongoose disconnected through ${msg}`);
-    callback();
+    
   });
 };
 
-// For nodemon restarts                                 
+// Shutdown invoked by nodemon signal                                
 process.once('SIGUSR2', () => {
-  gracefulShutdown('nodemon restart', () => {
+  gracefulShutdown('nodemon restart');
     process.kill(process.pid, 'SIGUSR2');
-  });
+  
 });
-// For app termination
+// Shutdown invoked by app termination
 process.on('SIGINT', () => {
-  gracefulShutdown('app termination', () => {
+  gracefulShutdown('app termination');
     process.exit(0);
-  });
+  
 });
-// For Heroku app termination
+// Shutdown invoked by container termination
 process.on('SIGTERM', () => {
-  gracefulShutdown('Heroku app shutdown', () => {
+  gracefulShutdown('app shutdown');
     process.exit(0);
-  });
+  
 });
 
+// Make Initial connection to DB
+connect();
+
+// Import Mongoose schema
 require('./travlr');
+module.exports = mongoose;

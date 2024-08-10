@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angula
 import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trips';
-import { trips } from '../data/trips';
 
 @Component({
 selector: 'app-edit-trip',
@@ -20,7 +19,7 @@ trip!: trip;
 submitted = false;
 message : string = '';
 
-export class AddTripComponent implements OnInit {
+export class EditTripComponent implements OnInit {
 addForm!: FormGroup;
 submitted = false;
 constructor(
@@ -91,3 +90,4 @@ error: (error: any) => {
 }
 // get the form short name to access the form fields
 get f() { return this.addForm.controls; }
+};

@@ -14,8 +14,8 @@ templateUrl: './edit-trip.component.html',
 styleUrl: './edit-trip.component.css'
 })
 
-public editForm!: FormGroup;
-trip!: trip;
+public editForm!; FormGroup; 
+trip!; trip;
 submitted = false;
 message : string = '';
 

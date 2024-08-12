@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angula
 import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trips';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
 selector: 'app-add-trip',
@@ -14,14 +15,19 @@ templateUrl: './add-trip.component.html',
 styleUrl: './add-trip.component.css'
 })
 export class AddTripComponent implements OnInit {
+
 addForm!: FormGroup;
 submitted = false;
+
+
 constructor(
 private formBuilder: FormBuilder,
 private router: Router,
 private tripService: TripDataService
 ) { }
 ngOnInit() {
+
+
 this.addForm = this.formBuilder.group({
 _id: [],
 code: ['', Validators.required],

@@ -17,17 +17,21 @@ styleUrl: './edit-trip.component.css'
 public editForm!; FormGroup; 
 trip!; trip;
 submitted = false;
-message : string = '';
+messge : string = '';
 
 export class EditTripComponent implements OnInit {
-addForm!: FormGroup;
-submitted = false;
+  trips!: Trip[];
+  message: string = '';
+
 constructor(
 private formBuilder: FormBuilder,
 private router: Router,
 private tripService: TripDataService
 ) { }
 ngOnInit() : void{
+
+  
+
   // Retrieve stashed trip ID
 let tripCode = localStorage.getItem("tripCode");
 if (!tripCode) {
@@ -37,6 +41,8 @@ return;
 }
 console.log('EditTripComponent::ngOnInit');
 console.log('tripcode:' + tripCode);
+
+
 
 this.addForm = this.formBuilder.group({
 _id: [],

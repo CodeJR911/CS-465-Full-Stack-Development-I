@@ -15,20 +15,20 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './trip-listing.component.html',
   styleUrl: './trip-listing.component.css',
   providers: [TripDataService]
+
 })
 
 export class TripListingComponent implements OnInit {
 
+
 trips!: Trip[];
 message: string = '';
+
 constructor(
-  private router: Router,
+  private router: Router, 
   private authenticationService: AuthenticationService
-  ) {}
-  public isLoggedIn()
-  {
-  return this.authenticationService.isLoggedIn();
-  }
+) {}
+  
 public addTrip(): void {
   this.router.navigate(['add-trip']);
 }
@@ -51,6 +51,10 @@ private getStuff(): void {
       }
     })
 }
+public isLoggedIn()
+  {
+  return this.authenticationService.isLoggedIn();
+  }
 
   ngOnInit(): void {
     console.log('ngOnInit');

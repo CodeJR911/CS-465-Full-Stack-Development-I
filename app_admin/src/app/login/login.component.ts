@@ -15,7 +15,7 @@ import { User } from '../models/user';
 })
 export class LoginComponent {
 
-  public formError: string = '';
+public formError: string = '';
 submitted = false;
 credentials = {
 name: '',

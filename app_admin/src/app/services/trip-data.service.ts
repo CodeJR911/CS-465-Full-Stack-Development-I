@@ -8,11 +8,13 @@ import { Observable } from 'rxjs';
 import { Trip } from '../models/trips';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class TripDataService {
- 
+
+
   constructor(
     private http: HttpClient,
     @Inject(BROWSER_STORAGE) private storage: Storage
@@ -41,23 +43,24 @@ login(user: User, passwd: string) : Observable<AuthResponse> {
   return this.http.post<AuthResponse>(this.baseUrl + '/' + endpoint,
   formData);
   }
-  
+
   getTrips() : Observable<Trip[]> {
     return this.http.get<Trip[]>(this.url);
   }
-
+  
   addTrip(formData: Trip) : Observable<Trip> {
     return this.http.post<Trip>(this.url, formData);
   }
-
+  
   getTrip(tripCode: string) : Observable<Trip[]> {
     //console.log('inside TripDataService: :getTrips');
     return this.http.get<Trip[]>(this.url + '/' + tripCode);
   }
-
+  
   updateTrip(formData: Trip) : Observable<Trip> {
     // console.log('Inside TripDataService::addTrips);
     return this.http.put<Trip>(this.url + '/' + formData.code, formData);
-
+  
   }
-}
+  }
+  

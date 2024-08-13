@@ -22,7 +22,7 @@ const travel = async function(req, res, next) {
 
             } else {
                 if(!json.length){
-                    message = 'No triups exist in our database!';
+                    message = 'No trips exist in our database!';
                 }
             }
             res.render('travel', {title: 'Travlr Getaways', trips: json, message});

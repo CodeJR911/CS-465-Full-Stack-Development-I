@@ -4,7 +4,7 @@ const model = mongoose.model('trips');
 
 // GET: /trips - lists all the trips
 
-const tripList = async (req, res) => {
+const tripsList = async (req, res) => {
     const q = await model
         .find({})  // empty filter for all
         .exec();
@@ -16,7 +16,7 @@ const tripList = async (req, res) => {
                 .json(err);
     } else {  // Return resulting trip list
         return res
-            .ststus(200)
+            .status(200)
             .json(q);
     }
 
@@ -49,7 +49,7 @@ const tripsFindByCode = async (req, res) => {
 
 
 const tripsAddTrip = async (req, res) => {
-    const newTrip = new trip({
+    const newTrip = new Trip({
         code: req.body.code,
         name: req.body.name,
         length: req.body.length,
@@ -71,6 +71,10 @@ const tripsAddTrip = async (req, res) => {
                 .status(201)
                 .json(q);
         }
+
+        // Uncomment the following line to show results ofoperation
+        // on the console
+        // console.log(q);
     
 };
 // PUT: /trips/:tripCode - Adds a new Trip
@@ -106,15 +110,16 @@ const tripsUpdateTrip = async(req, res) => {
             .status(201)
             .json(q);
     }
+    // Uncomment the following line to show results of operation
+    // on the console
+    // console.log(q);
    
 module.exports = {
     tripsList,
     tripsFindByCode,
     tripsAddTrip,
     tripsUpdateTrip,
-   // Uncomment the following line to show results ofoperation
-// on the console
-// console.log(q);
+
 }
 }; 
 

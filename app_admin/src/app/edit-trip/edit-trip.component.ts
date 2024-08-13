@@ -13,21 +13,21 @@ imports: [CommonModule, ReactiveFormsModule],
 templateUrl: './edit-trip.component.html',
 styleUrl: './edit-trip.component.css'
 })
-
-public editForm!; FormGroup; 
-trip!; trip;
-submitted = false;
-messge : string = '';
-
 export class EditTripComponent implements OnInit {
-  trips!: Trip[];
-  message: string = '';
+
+public editForm!: FormGroup; 
+trip!: Trip;
+submitted = false;
+message : string = '';
 
 constructor(
-private formBuilder: FormBuilder,
-private router: Router,
-private tripService: TripDataService
-) { }
+  private formBuilder: FormBuilder,
+  private router: Router,
+  private tripService: TripDataService
+  ) {}
+
+
+
 ngOnInit() : void{
 
   
@@ -44,7 +44,7 @@ console.log('tripcode:' + tripCode);
 
 
 
-this.addForm = this.formBuilder.group({
+this.editForm = this.formBuilder.group({
 _id: [],
 code: ['', Validators.required],
 name: ['', Validators.required],
@@ -56,7 +56,7 @@ image: ['', Validators.required],
 description: ['', Validators.required],
 })
 
-this.tripDataService.getTrip(tripCode)
+this.tripService.getTrip(tripCode)
 .subscribe({
   next: (value: any) => {
 this.trip = value;
@@ -81,9 +81,9 @@ public onSubmit()
 {
 this.submitted = true;
 
-if(this.addForm.valid)
+if(this.editForm.valid)
   {
-this.tripService.addTrip(this.addForm.value).subscribe( {
+this.tripService.getTrip(this.editForm.value).subscribe( {
   next: (data: any) => {
     console.log(data);
     this.router.navigate(['']);
@@ -95,5 +95,5 @@ error: (error: any) => {
 }
 }
 // get the form short name to access the form fields
-get f() { return this.addForm.controls; }
+get f() { return this.editForm.controls; }
 };

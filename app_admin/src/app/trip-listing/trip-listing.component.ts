@@ -23,6 +23,7 @@ export class TripListingComponent implements OnInit {
 
 trips!: Trip[];
 message: string = '';
+  tripDataService: any;
 
 constructor(
   private router: Router, 

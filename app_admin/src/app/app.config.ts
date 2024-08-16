@@ -8,7 +8,7 @@ import { authInterceptProvider } from './utils/jwt.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient()
+    provideHttpClient(),
     importProvidersFrom(HttpClientModule),
     authInterceptProvider
   ]

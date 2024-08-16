@@ -51,7 +51,7 @@ router
 
 // define route for registration endpoint
 router
-    .route('register')
+    .route('/register')
     .post(authController.register);
 
 // define route for our trips endpoint

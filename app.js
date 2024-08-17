@@ -1,4 +1,4 @@
-require('dotenv').config();c
+require('dotenv').config();
 
 var createError = require('http-errors');
 var express = require('express');
@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initializa());
+app.use(passport.initialize());
 
 // Enable CORS
 app.use('/api', (req, res, next) => {

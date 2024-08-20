@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const passport = require('passport');
 
+
 const register = async(req, res) => {
     // Validate message to insure that all parameters are present
     if (!req.body.name || !req.body.email || !req.body.password) {

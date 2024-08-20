@@ -6,18 +6,21 @@ import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trips';
 import { AuthenticationService } from '../services/authentication.service';
+import { trips } from '../data/trips';
 
 @Component({
 selector: 'app-add-trip',
 standalone: true,
-imports: [CommonModule, ReactiveFormsModule],
+imports: [CommonModule, ReactiveFormsModule, AuthenticationService],
 templateUrl: './add-trip.component.html',
 styleUrl: './add-trip.component.css'
 })
 export class AddTripComponent implements OnInit {
 
-addForm!: FormGroup;
+  public addForm!: FormGroup;
+trip!: Trip;
 submitted = false;
+message : string = '';
 
 
 constructor(

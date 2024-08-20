@@ -9,7 +9,7 @@ const tripsList = async (req, res) => {
         .find({})  // empty filter for all
         .exec();
 
-    if(lq)
+    if(!q)
     { // Database returned no data
         return res
                 .status(404)

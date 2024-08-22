@@ -27,7 +27,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
 // register handlebars partials (https://www.npmjs.com/package/hbs)
-handlebars.registerPartials(__dirname, + '/app_server/views/partials');
+handlebars.registerPartials(__dirname, '/app_server/views/partials');
 
 app.set('view engine', 'hbs');
 
@@ -49,7 +49,7 @@ app.use('/api', (req, res, next) => {
 // wire up routes to controllers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/travel', travelRouter);;
+app.use('/travel', travelRouter);
 app.use('/api', apiRouter);
 
 

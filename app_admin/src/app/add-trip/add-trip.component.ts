@@ -5,9 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
-import { Trip } from '../models/trips'; 
+import { Trip } from '../models/trip'; 
 import { AuthenticationService } from '../services/authentication.service';
-import { trips } from '../data/trips'; 
 
 @Component({
   selector: 'app-add-trip',

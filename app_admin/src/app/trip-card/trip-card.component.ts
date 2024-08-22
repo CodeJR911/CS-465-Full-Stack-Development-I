@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Trip } from '../models/trips';
+import { Trip } from '../models/trip';
 import { AuthenticationService } from '../services/authentication.service';
 
 

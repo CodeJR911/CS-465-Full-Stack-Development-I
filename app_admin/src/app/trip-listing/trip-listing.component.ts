@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TripCardComponent } from '../trip-card/trip-card.component';
 
 import { TripDataService } from '../services/trip-data.service';
-import { Trip } from '../models/trips';
+import { Trip } from '../models/trip';
 
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';

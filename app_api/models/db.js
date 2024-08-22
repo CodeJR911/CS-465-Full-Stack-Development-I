@@ -3,29 +3,15 @@ const host = process.env.DB_HOST || '127.0.0.1';
 const dbURI = `mongodb://${host}/travlr`;
 const readLine = require('readline');
 
-// Build the connection string and set the connection timeout.
-// timeout is in milliseconds.
+// Centralized Connection Function
 const connect = () => {
-  setTimeout(() => mongoose.connect(dbURI, {
-  }), 1000);
-}
-
-// Monitor connection events
-mongoose.connection.on('connected', () => {
-  console.log(`Mongoose connected to ${dbURI}`);
-});
-mongoose.connection.on('error', err => {
-  console.log('Mongoose connection error:', err);
-});
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose disconnected');
-});
-
-const gracefulShutdown = (msg) => {
-  mongoose.connection.close( () => {
-    console.log(`Mongoose disconnected through ${msg}`);
-    
-  });
+  mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log(`Mongoose connected to ${dbURI}`);
+    })
+    .catch(err => {
+      console.error('Error connecting to MongoDB:', err);
+    });
 };
 
 // Shutdown invoked by nodemon signal                                

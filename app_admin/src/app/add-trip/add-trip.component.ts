@@ -4,9 +4,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angula
 
 import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
-import { Trip } from '../models/trips'; // Assuming you have a Trip interface
+import { Trip } from '../models/trips'; 
 import { AuthenticationService } from '../services/authentication.service';
-import { trips } from '../data/trips'; // Assuming this is an array of Trip objects
+import { trips } from '../data/trips'; 
 
 @Component({
   selector: 'app-add-trip',

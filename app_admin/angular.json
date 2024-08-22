@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css", 
-              "src/assets/css/styles.css"
+              "src/assets/css/styles.css" 
             ],
             "scripts": []
           },
@@ -91,8 +91,8 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "src/assets/css/styles.css"
+              "src/styles.css", 
+              "src/assets/css/styles.css" 
             ],
             "scripts": []
           }
@@ -101,3 +101,4 @@
     }
   }
 }
+

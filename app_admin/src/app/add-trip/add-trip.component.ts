@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder } from '@angular/forms';
-import { FormGroup } from '@angular/forms'; 
-import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { Router } from "@angular/router";
@@ -14,7 +12,7 @@ import { trips } from '../data/trips';
 @Component({
   selector: 'app-add-trip',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AuthenticationService], // Import AuthenticationService
+  imports: [CommonModule, ReactiveFormsModule], // Import AuthenticationService
   templateUrl: './add-trip.component.html',
   styleUrl: './add-trip.component.css'
 })
@@ -28,7 +26,8 @@ export class AddTripComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private tripService: TripDataService
+    private tripService: TripDataService,
+    private authenticationService: AuthenticationService // Inject AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -65,3 +64,4 @@ export class AddTripComponent implements OnInit {
   // Get the form short name to access the form fields
   get f() { return this.addForm.controls; }
 }
+

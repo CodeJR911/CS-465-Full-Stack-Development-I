@@ -1,7 +1,4 @@
-</div *ngIf="isLoggedIn()">
-    <button (click)="editTrip(trip)" class="btn btn-info">Edit Trip</button>
-</div>
-<div class="card">
+ <div class="card" *ngIf="isLoggedIn()">
     <div class="card-header">{{ trip.name }}</div>
     <img src="assets/images/{{ trip.image }}"
         alt="trip thumbnail" class="card-img-top">
@@ -14,5 +11,7 @@
         </p>
         <p class="card-text" [innerHTML]="trip.description">
         </p>
-   
+        <button (click)="editTrip(trip)" class="btn btn-info">Edit Trip</button>
     </div>
+</div>
+    

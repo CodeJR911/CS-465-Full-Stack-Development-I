@@ -24,9 +24,10 @@ export class TripListingComponent implements OnInit {
 
 trips!: Trip[];
 message: string = '';
-  tripDataService: any;
+
 
 constructor(
+  private tripDataService: TripDataService,
   private router: Router, 
   private authenticationService: AuthenticationService
 ) {}
